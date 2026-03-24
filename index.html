@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects Hub</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap');
+
+        :root {
+            --bg-1: #f5f8ff;
+            --bg-2: #e8f2ff;
+            --text: #0f172a;
+            --muted: #5b6b84;
+            --card: rgba(255, 255, 255, 0.86);
+            --border: #dbe7fb;
+            --accent-a: #2563eb;
+            --accent-b: #0ea5e9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            font-family: 'Space Grotesk', 'Segoe UI', Tahoma, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(58% 54% at 10% 12%, rgba(59, 130, 246, 0.18), transparent 70%),
+                radial-gradient(52% 44% at 90% 92%, rgba(16, 185, 129, 0.16), transparent 72%),
+                linear-gradient(160deg, var(--bg-1), var(--bg-2));
+        }
+
+        .card {
+            width: min(100%, 720px);
+            border-radius: 24px;
+            padding: 28px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 20px 55px rgba(15, 23, 42, 0.15);
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            margin-bottom: 6px;
+        }
+
+        p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .links {
+            display: grid;
+            gap: 10px;
+        }
+
+        .links a {
+            display: block;
+            padding: 14px 16px;
+            text-decoration: none;
+            color: white;
+            border-radius: 12px;
+            background: linear-gradient(130deg, var(--accent-a), var(--accent-b));
+            font-weight: 700;
+        }
+
+        .links a:hover {
+            filter: brightness(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <main class="card">
+        <h1>Projects Hub</h1>
+        <p>Select a project to open:</p>
+        <div class="links">
+            <a href="./To-do-list%20App/To-do-list%20App.html">To-do List App</a>
+            <a href="./Random%20password%20Generator/random%20password%20generator.html">Random Password Generator</a>
+        </div>
+    </main>
+</body>
+
+</html>
