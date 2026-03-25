@@ -1,0 +1,253 @@
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Sora:wght@600;700&display=swap');
+
+  :root {
+      --bg-top: #cbe7d5;
+      --bg-bottom: #b3d5ef;
+      --card-bg: rgba(255, 255, 255, 0.88);
+      --text-main: #13262f;
+      --text-soft: #355563;
+      --accent: #0b8f87;
+      --accent-dark: #096f69;
+      --accent-warm: #ef9b45;
+      --stroke: rgba(19, 38, 47, 0.12);
+      --shadow: 0 18px 45px rgba(16, 46, 62, 0.22);
+  }
+
+  * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+  }
+
+  body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: 'Manrope', sans-serif;
+      color: var(--text-main);
+      background:
+          radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.6) 0%, transparent 40%),
+          radial-gradient(circle at 85% 75%, rgba(239, 155, 69, 0.22) 0%, transparent 35%),
+          linear-gradient(135deg, var(--bg-top), var(--bg-bottom));
+      overflow-x: hidden;
+  }
+
+  .container {
+      width: min(100%, 720px);
+      padding: clamp(18px, 3.5vw, 34px);
+      border-radius: 24px;
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      background:
+          linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.87)),
+          url('quiz box background.webp') center / cover no-repeat;
+      backdrop-filter: blur(4px);
+      animation: cardEnter 700ms ease-out;
+  }
+
+  h1 {
+      font-family: 'Sora', sans-serif;
+      text-align: center;
+      margin-bottom: 6px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(11, 143, 135, 0.28);
+      letter-spacing: 0.3px;
+      font-size: clamp(1.4rem, 3.8vw, 2rem);
+  }
+
+  h2 {
+      margin: 14px 0 18px;
+      color: var(--text-soft);
+      font-size: clamp(0.95rem, 2.7vw, 1.1rem);
+      font-weight: 700;
+      animation: softReveal 700ms ease-out 120ms both;
+  }
+
+  .quiz-container {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+  }
+
+  #question {
+      font-size: clamp(1rem, 2.9vw, 1.22rem);
+      line-height: 1.45;
+      margin-bottom: 2px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(19, 38, 47, 0.1);
+      border-left: 5px solid var(--accent-warm);
+      border-radius: 14px;
+      padding: 16px;
+      animation: softReveal 700ms ease-out 220ms both;
+  }
+
+  .options {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+  }
+
+  .option {
+      width: 100%;
+      text-align: left;
+      border: 1px solid rgba(19, 38, 47, 0.14);
+      border-radius: 12px;
+      padding: 13px 14px;
+      background: #ffffff;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.98rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease, border-color 220ms ease;
+      animation: optionEnter 550ms ease-out both;
+  }
+
+  .option:nth-child(1) {
+      animation-delay: 260ms;
+  }
+
+  .option:nth-child(2) {
+      animation-delay: 340ms;
+  }
+
+  .option:nth-child(3) {
+      animation-delay: 420ms;
+  }
+
+  .option:nth-child(4) {
+      animation-delay: 500ms;
+  }
+
+  .option:hover,
+  .option:focus-visible {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: #f1fffd;
+      box-shadow: 0 9px 18px rgba(11, 143, 135, 0.2);
+      outline: none;
+  }
+
+  .option:active {
+      transform: translateY(0);
+  }
+
+  #next-btn {
+      margin: 10px auto 0;
+      padding: 12px 26px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(120deg, var(--accent), var(--accent-dark));
+      color: #ffffff;
+      font-family: 'Sora', sans-serif;
+      font-size: 0.98rem;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+      animation: pulseIn 800ms ease-out 520ms both;
+  }
+
+  #next-btn:hover,
+  #next-btn:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(9, 111, 105, 0.4);
+      filter: brightness(1.04);
+      outline: none;
+  }
+
+  #next-btn:active {
+      transform: translateY(0);
+  }
+
+  @keyframes cardEnter {
+      from {
+          opacity: 0;
+          transform: translateY(18px) scale(0.98);
+      }
+
+      to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+      }
+  }
+
+  @keyframes softReveal {
+      from {
+          opacity: 0;
+          transform: translateY(10px);
+      }
+
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+
+  @keyframes optionEnter {
+      from {
+          opacity: 0;
+          transform: translateX(-10px);
+      }
+
+      to {
+          opacity: 1;
+          transform: translateX(0);
+      }
+  }
+
+  @keyframes pulseIn {
+      0% {
+          opacity: 0;
+          transform: scale(0.95);
+      }
+
+      65% {
+          opacity: 1;
+          transform: scale(1.04);
+      }
+
+      100% {
+          transform: scale(1);
+      }
+  }
+
+  @media (min-width: 640px) {
+      .options {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .option {
+          min-height: 56px;
+          display: flex;
+          align-items: center;
+      }
+  }
+
+  @media (max-width: 480px) {
+      body {
+          padding: 14px;
+      }
+
+      .container {
+          border-radius: 18px;
+          padding: 16px;
+      }
+
+      #next-btn {
+          width: 100%;
+      }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 1ms !important;
+          scroll-behavior: auto !important;
+      }
+  }
