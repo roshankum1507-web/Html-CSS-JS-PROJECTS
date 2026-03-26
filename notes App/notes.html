@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="notes.css">
+    <title>Notes App</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h1>Notes</h1>
+            <p>Create quick notes. Changes are saved automatically.</p>
+        </header>
+
+        <div class="controls">
+            <button id="create-note" class="btn-primary" type="button">Create Note</button>
+            <button id="clear-all" class="btn-ghost" type="button">Clear All</button>
+            <button id="theme-toggle" class="btn-ghost" type="button">Dark Mode</button>
+            <button id="export-notes" class="btn-ghost" type="button">Export Notes</button>
+            <button id="import-trigger" class="btn-ghost" type="button">Import Notes</button>
+            <input id="import-file" type="file" accept="application/json" hidden>
+        </div>
+
+        <div class="filters">
+            <input id="search" type="search" placeholder="Search notes...">
+            <select id="tag-filter" aria-label="Filter notes by tag">
+                <option value="all">All tags</option>
+            </select>
+        </div>
+
+        <p id="status" class="status">0 notes</p>
+
+        <div id="notes-container" class="notes-container" aria-live="polite">
+        </div>
+
+    </div>
+
+    <script src="notes.js"></script>
+
+
+
+
+
+</body>
+
+</html>

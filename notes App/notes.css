@@ -1,0 +1,256 @@
+:root {
+    --bg-start: #f8ede3;
+    --bg-end: #dfd3c3;
+    --card: #fffdf8;
+    --panel: #f4ede4;
+    --ink: #2a2724;
+    --soft-ink: #5c5751;
+    --accent: #1f7a8c;
+    --danger: #bb3e03;
+    --border: #dbcfc0;
+    --focus: rgba(31, 122, 140, 0.16);
+}
+
+[data-theme="dark"] {
+    --bg-start: #0f1f26;
+    --bg-end: #1f3240;
+    --card: #1b2c36;
+    --panel: #213742;
+    --ink: #f3f8fb;
+    --soft-ink: #b2c6d2;
+    --accent: #4fc0cc;
+    --danger: #ff8f70;
+    --border: #37515f;
+    --focus: rgba(79, 192, 204, 0.22);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+    color: var(--ink);
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 20px 48px;
+}
+
+.header {
+    margin-bottom: 18px;
+}
+
+.header h1 {
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    letter-spacing: 0.2px;
+}
+
+.header p {
+    color: var(--soft-ink);
+    margin-top: 6px;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 18px 0 12px;
+}
+
+button,
+select,
+input {
+    border-radius: 10px;
+    font-size: 0.95rem;
+}
+
+button {
+    border: none;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #fff;
+}
+
+.btn-ghost {
+    background: var(--panel);
+    color: var(--ink);
+    border: 1px solid var(--border);
+}
+
+.filters {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+#search,
+#tag-filter {
+    width: 100%;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--ink);
+    padding: 10px 12px;
+}
+
+#search:focus,
+#tag-filter:focus,
+.note-input:focus,
+.note-color:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--focus);
+    outline: none;
+}
+
+.status {
+    color: var(--soft-ink);
+    font-size: 0.92rem;
+    margin-bottom: 10px;
+}
+
+.notes-container {
+    display: grid;
+    gap: 14px;
+}
+
+.empty-state {
+    border: 1px dashed var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    color: var(--soft-ink);
+    background: color-mix(in srgb, var(--card) 75%, transparent);
+}
+
+.note-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 7px 16px rgba(65, 52, 41, 0.08);
+    background: var(--note-color, var(--card));
+}
+
+.note-card.dragging {
+    opacity: 0.5;
+}
+
+.note-toolbar {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.note-toolbar span {
+    color: var(--soft-ink);
+    font-size: 0.84rem;
+}
+
+.note-color {
+    width: 42px;
+    height: 32px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    cursor: pointer;
+}
+
+.btn-small {
+    padding: 7px 10px;
+    font-size: 0.82rem;
+}
+
+.note-input,
+.note-preview {
+    width: 100%;
+    min-height: 108px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--card) 92%, white);
+    padding: 10px;
+    line-height: 1.45;
+}
+
+.note-input {
+    resize: vertical;
+    color: var(--ink);
+}
+
+.note-preview {
+    overflow-wrap: anywhere;
+}
+
+.note-preview ul {
+    margin-left: 18px;
+}
+
+.note-preview code {
+    background: color-mix(in srgb, var(--panel) 86%, #111 14%);
+    border-radius: 5px;
+    padding: 1px 4px;
+}
+
+.is-hidden {
+    display: none;
+}
+
+.note-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.tag-chip {
+    background: color-mix(in srgb, var(--panel) 88%, white 12%);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    color: var(--soft-ink);
+}
+
+.card-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.btn-delete {
+    background: color-mix(in srgb, var(--danger) 18%, transparent);
+    color: var(--danger);
+    border: 1px solid color-mix(in srgb, var(--danger) 35%, transparent);
+}
+
+@media (max-width: 740px) {
+    .filters {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 540px) {
+    .container {
+        padding: 22px 14px 36px;
+    }
+
+    .controls {
+        gap: 8px;
+    }
+
+    .controls button {
+        flex: 1 1 46%;
+    }
+}
