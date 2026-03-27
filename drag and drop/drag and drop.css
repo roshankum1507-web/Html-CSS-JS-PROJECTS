@@ -1,0 +1,172 @@
+:root {
+    --bg-1: #0f172a;
+    --bg-2: #1e293b;
+    --panel: rgba(255, 255, 255, 0.08);
+    --panel-border: rgba(255, 255, 255, 0.18);
+    --card: linear-gradient(135deg, #f97316, #ea580c);
+    --text: #e2e8f0;
+    --success: #10b981;
+    --drop-glow: rgba(16, 185, 129, 0.4);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text);
+    background: radial-gradient(circle at 20% 20%, #334155 0%, transparent 35%),
+        radial-gradient(circle at 80% 80%, #1d4ed8 0%, transparent 30%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2));
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #f97316, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.container {
+    width: min(900px, 100%);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+    gap: 28px;
+    align-items: start;
+}
+
+.column-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.right,
+.left {
+    min-height: 420px;
+    border-radius: 18px;
+    border: 1px solid var(--panel-border);
+    background: var(--panel);
+    backdrop-filter: blur(8px);
+    padding: 18px;
+    display: grid;
+    gap: 14px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+
+.box {
+    width: 100%;
+    min-height: 96px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--card);
+    box-shadow: 0 10px 18px rgba(234, 88, 12, 0.32);
+    cursor: grab;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.box:hover::before {
+    left: 100%;
+}
+
+.box:active {
+    cursor: grabbing;
+    transform: scale(0.98);
+}
+
+.box.is-dragging {
+    opacity: 0.8;
+    transform: rotate(5deg) scale(1.05);
+    box-shadow: 0 20px 40px rgba(249, 115, 22, 0.4);
+    z-index: 1000;
+}
+
+
+.box:-webkit-drag-image,
+.box[draggable="true"] {
+    -webkit-user-drag: element !important;
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+}
+
+.left .box {
+    background: linear-gradient(135deg, var(--success), #059669);
+    box-shadow: 0 10px 18px rgba(16, 185, 129, 0.3);
+}
+
+.left:empty::after {
+    content: 'Drop boxes here!';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1rem;
+    min-height: 96px;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    margin: 14px 0;
+}
+
+.right.is-drop-target,
+.left.is-drop-target {
+    border-color: var(--drop-glow);
+    box-shadow: 0 0 0 3px var(--drop-glow), 0 0 30px rgba(16, 185, 129, 0.2);
+    background: rgba(16, 185, 129, 0.03);
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 12px;
+    justify-content: center;
+}
+
+@media (max-width: 700px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .right,
+    .left {
+        min-height: 360px;
+    }
+}
