@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="weather-dashboard.css" />
+  </head>
+  <body>
+    <div class="page-bg" aria-hidden="true"></div>
+    <main class="weather-app">
+      <header>
+        <p class="eyebrow">Weather Telling Project</p>
+        <h1>Weather Dashboard</h1>
+      </header>
+
+      <section class="search-card">
+        <form id="searchForm" class="search-row">
+          <input
+            id="cityInput"
+            type="text"
+            placeholder="Search city (e.g. Delhi, Tokyo, London)"
+            required
+          />
+          <button type="submit">Search</button>
+          <button id="locationBtn" type="button" class="ghost">Use My Location</button>
+        </form>
+        <p id="statusText" class="status">Enter a city to get weather details.</p>
+      </section>
+
+      <section id="currentCard" class="current-card hidden">
+        <div>
+          <h2 id="placeName">-</h2>
+          <p id="localTime" class="meta">-</p>
+        </div>
+        <div class="temp-wrap">
+          <p id="tempValue" class="temp">--.- C</p>
+          <p id="windValue" class="meta">Wind: -- km/h</p>
+        </div>
+      </section>
+
+      <section>
+        <h3>5-Day Forecast</h3>
+        <div id="forecastGrid" class="forecast-grid"></div>
+      </section>
+    </main>
+
+    <script src="weather-dashboard.js"></script>
+  </body>
+</html>
